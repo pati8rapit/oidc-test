@@ -1,0 +1,19 @@
+{
+  "name": "backend_app",
+  "version": "1.0.0",
+  "description": "backend_app by oidc-test",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js"
+  },
+  "author": "pati8rapit",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

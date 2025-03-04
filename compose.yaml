@@ -7,10 +7,21 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HTTP_RELATIVE_PATH: auth
     command:
       - start-dev
     volumes:
       - auth_data:/opt/keycloak/data
 
+  backend_app:
+    build: ./backend_app
+    container_name: backend_app
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend_app:/backend_app:ro
+      - backend_node_modules:/backend_app/node_modules
+
 volumes:
   auth_data:
+  backend_node_modules:
