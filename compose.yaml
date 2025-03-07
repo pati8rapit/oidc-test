@@ -22,6 +22,12 @@ services:
       - ./backend_app:/backend_app
       - backend_node_modules:/backend_app/node_modules
 
+  api:
+    build: ./api
+    container_name: api
+    ports:
+      - 5000:5000
+
 volumes:
   auth_data:
   backend_node_modules:
