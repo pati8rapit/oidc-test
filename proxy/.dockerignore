@@ -1,0 +1,11 @@
+# Nginxログファイル
+*.log
+logs/
+access.log
+error.log
+
+# 秘密鍵、証明書関連（必要に応じてコメントアウト）
+*.key
+*.pem
+*.crt
+*.cer

@@ -14,19 +14,19 @@ app.use(express.urlencoded({ extended: true }));
 
 // ルートエンドポイント
 app.get('/', (req, res) => {
-  res.redirect('http://localhost:8080/auth/realms/oidc-test/.well-known/openid-configuration')
+  res.redirect('https://localhost/auth/realms/oidc-test/.well-known/openid-configuration')
 });
 
 // keycloakの認証エンドポイント
 app.get('/authorize', (req, res) => {
-  const authUrl = 'http://localhost:8080/auth/realms/oidc-test/protocol/openid-connect/auth';
+  const authUrl = 'https://localhost/auth/realms/oidc-test/protocol/openid-connect/auth';
   const scope = 'openid';
   const responseType = 'code';
   const clientId = 'test-client';
   const state = 'TH25QRQHJJC16YY7AKNS';
   const codeChallenge = 'Zfy2DA1iCm7v1bby0a_cs2bRVF6v-DMd0HNsaHbncR4';
   const codeChallengeMethod = 'S256';
-  const redirectUri = 'http://localhost:3000/callback';
+  const redirectUri = 'https://localhost/callback';
   const nonce = '097TREH1IZ5LRZ9F5MSN';
 
   const url = `${authUrl}?scope=${scope}&response_type=${responseType}&client_id=${clientId}&state=${state}&code_challenge=${codeChallenge}&code_challenge_method=${codeChallengeMethod}&redirect_uri=${redirectUri}&nonce=${nonce}`;
@@ -44,16 +44,16 @@ app.get('/callback', (req, res) => {
   const code = req.query.code;
 
   // keycloakのトークンエンドポイント
-  const tokenEndpointUrl = 'http://localhost:8080/auth/realms/oidc-test/protocol/openid-connect/token';
+  const tokenEndpointUrl = 'https://localhost/auth/realms/oidc-test/protocol/openid-connect/token';
 
   const clientId = 'test-client';
   const clientSecret = 'wPqKPUjviWs41KvVRpjLYjwSuSg0RQA4';
   const codeVerifier = 'OF6NR422P3P29J4DFV8G55F4HTFAIONTAR13BEUD72YDWFL0OPRJ0L6V5ZKCY9D3DFK6FY85MDIK9ZQVIRATGUU9EC01MYK2PVQA';
-  const redirectUri = 'http://localhost:3000/callback';
+  const redirectUri = 'https://localhost/callback';
   const grantType = 'authorization_code';
 
   // curlでの実行例
-  'curl.exe -X POST -d "grant_type=authorization_code&code=1e822d58-dab1-4d2a-a4f8-51a0115b681b.88997673-9cf1-4027-a531-3eca47cbcf2d.167aa8bc-5991-4eba-921f-f062e0f66e2e&redirect_uri=http://localhost:3000/callback&client_id=test-client&client_secret=wPqKPUjviWs41KvVRpjLYjwSuSg0RQA4&code_verifier=OF6NR422P3P29J4DFV8G55F4HTFAIONTAR13BEUD72YDWFL0OPRJ0L6V5ZKCY9D3DFK6FY85MDIK9ZQVIRATGUU9EC01MYK2PVQA" http://localhost:8080/auth/realms/oidc-test/protocol/openid-connect/token'
+  'curl.exe -X POST -d "grant_type=authorization_code&code=1e822d58-dab1-4d2a-a4f8-51a0115b681b.88997673-9cf1-4027-a531-3eca47cbcf2d.167aa8bc-5991-4eba-921f-f062e0f66e2e&redirect_uri=https://localhost:3000/callback&client_id=test-client&client_secret=wPqKPUjviWs41KvVRpjLYjwSuSg0RQA4&code_verifier=OF6NR422P3P29J4DFV8G55F4HTFAIONTAR13BEUD72YDWFL0OPRJ0L6V5ZKCY9D3DFK6FY85MDIK9ZQVIRATGUU9EC01MYK2PVQA" https://localhost:8080/auth/realms/oidc-test/protocol/openid-connect/token'
 
   // リクエストパラメータ
   const postData = querystring.stringify({

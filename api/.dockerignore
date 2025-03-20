@@ -1,0 +1,37 @@
+# Python関連
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Python仮想環境
+bin/
+include/
+lib/
+lib64/
+share/
+pyvenv.cfg
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Pythonパッケージキャッシュ
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.egg-info/
+.installed.cfg
+*.egg
+
+# テストとドキュメント
+# test/
+# tests/
+# doc/
+# docs/

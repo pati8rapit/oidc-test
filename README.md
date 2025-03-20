@@ -12,3 +12,9 @@ terminalで下記を実行
 ### flaskサーバー起動
 
     flask run
+
+## proxyの自己署名証明書の作成
+
+    mkdir -p proxy/ssl
+    chmod +x generate-ssl.sh
+    ./generate-ssl.sh

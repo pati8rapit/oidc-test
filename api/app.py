@@ -1,5 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect
 import datetime
+from keycloak import KeycloakOpenID
+
+# Configure client
+keycloak_openid = KeycloakOpenID(server_url="http://auth:8080/auth/",
+                                 client_id="test-client",
+                                 realm_name="oidc-test",
+                                 client_secret_key="wPqKPUjviWs41KvVRpjLYjwSuSg0RQA4")
 
 app = Flask(__name__)
 app.json.ensure_ascii = False
@@ -31,9 +38,17 @@ def get_next_user_id(users):
     
     return max_id + 1
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+@app.route("/api/login", methods=['GET'])
+def get_login():
+    auth_url = keycloak_openid.auth_url(
+        redirect_uri="https://localhost/api/users",
+        scope="openid")
+
+    return redirect(auth_url)
+
+# @app.route("/")
+# def hello_world():
+#     return "<p>Hello, World!</p>"
 
 @app.route("/api/users/", methods=['GET'])
 def get_users():

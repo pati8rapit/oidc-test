@@ -1,2 +1,5 @@
 # node.js
 node_modules
+
+# proxyの自己署名証明書
+proxy/ssl
