@@ -22,6 +22,13 @@ services:
       - ./backend_app:/backend_app
       - backend_node_modules:/backend_app/node_modules
 
+  app:
+    build: ./app
+    container_name: app
+    volumes:
+      - ./app:/app
+      - app_node_modules:/app/node_modules
+
   api:
     build: ./api
     container_name: api
@@ -49,3 +56,4 @@ services:
 volumes:
   auth_data:
   backend_node_modules:
+  app_node_modules:
