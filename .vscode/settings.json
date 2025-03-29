@@ -1,3 +1,33 @@
 {
+  // デフォルトのフォーマッターとして選択
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 設定ファイルがプロジェクトのルートディレクトリに存在する場合にのみ動作します。
+  "prettier.requireConfig": true,
+  // 設定ファイルの名前と場所(各プロジェクトのrootに置きます。)
+  "prettier.configPath": ".prettier.json",
+  "[javascript]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
     "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": {
+    // import文を自動で探して挿入する。
+    "source.addMissingImports": "explicit",
+    // 保存時にeslintを実行
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["html", "javascriptreact", "typescriptreact"],
+  // CSS を検証しない
+  "css.validate": false,
+  "scss.validate": false
 }
