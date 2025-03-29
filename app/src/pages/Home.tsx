@@ -1,10 +1,19 @@
-import { Link } from "react-router-dom";
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <h1>ホーム画面</h1>
-      <Link to="/about">About</Link>
+      <Button
+        variant='contained'
+        onClick={() => {
+          navigate('/about');
+        }}
+      >
+        ABOUT
+      </Button>
     </div>
   );
 };
